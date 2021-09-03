@@ -5,48 +5,32 @@ namespace Library
 {
     public class AppointmentService
     {
-        public static string CreateAppointment(string name, string id, string phoneNumber, DateTime date, string appoinmentPlace, string doctorName)
+        private Patient patient;
+        private DateTime date;
+        private string appoinmentPlace;
+        public string AppointmentPlace
         {
-            StringBuilder stringBuilder = new StringBuilder("Scheduling appointment...\n");
-            Boolean isValid = true;
-
-            if (string.IsNullOrEmpty(name))
+            set
             {
-                stringBuilder.Append("Unable to schedule appointment, Name is required\n");
-                isValid = false;
+                if(!string.IsNullOrEmpty(appoinmentPlace)) this.appoinmentPlace = value;
+                else Console.WriteLine("Error con el lugar.");
             }
-
-            if (string.IsNullOrEmpty(id))
+        }
+        private string doctorName;
+        public string DoctorName
+        {
+            set
             {
-                stringBuilder.Append("Unable to schedule appointment, id is required\n");
-                isValid = false;
+                if(!string.IsNullOrEmpty(doctorName)) this.doctorName = value;
+                else Console.WriteLine("Error con el lugar.");
             }
-
-            if (string.IsNullOrEmpty(phoneNumber))
-            {
-                stringBuilder.Append("Unable to schedule appointment, Phone number is required\n");
-                isValid = false;
-            }
-
-            if (string.IsNullOrEmpty(appoinmentPlace))
-            {
-                stringBuilder.Append("Unable to schedule appointment, Appoinment place is required\n");
-                isValid = false;
-            }
-
-            
-            if (string.IsNullOrEmpty(doctorName))
-            {
-                stringBuilder.Append("Unable to schedule appointment, Doctor name is required\n");
-                isValid = false;
-            }
-
-            if (isValid)
-            {
-                stringBuilder.Append("Appoinment Scheduled");
-            }
-
-            return stringBuilder.ToString();
+        }
+        public AppointmentService(Patient paciente, DateTime date, string appoinmentPlace, string doctorName)
+        {
+            this.patient = paciente;
+            this.date = date;
+            this.appoinmentPlace = appoinmentPlace;
+            this.doctorName = doctorName;
         }
 
     }
