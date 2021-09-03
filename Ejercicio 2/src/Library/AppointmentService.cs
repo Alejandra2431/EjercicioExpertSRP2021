@@ -5,6 +5,11 @@ namespace Library
 {
     public class AppointmentService
     {
+        /*
+            Esta clase no cumple con el principio Expert porque sabe mucha información que no es específica para una responsabilida, 
+            puede ser dividida en clases que se encarguen de tareas específicas para que esas sí sean expertas, por ejemplo 
+            una clase medicalAppointment, otra patient, etc.  
+        */
         public static string CreateAppointment(string name, string id, string phoneNumber, DateTime date, string appoinmentPlace, string doctorName)
         {
             StringBuilder stringBuilder = new StringBuilder("Scheduling appointment...\n");
